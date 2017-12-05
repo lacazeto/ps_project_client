@@ -7,6 +7,10 @@ import { RouterModule, Routes } from "@angular/router";
 
 
 import { AppComponent } from "./app.component";
+import { ProfileComponent } from './pages/profile/profile.component';
+import { IndexComponent } from './pages/index/index.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 /* const routes: Routes = [
   { path: "", redirectTo: "/journal", pathMatch: "full" },
@@ -16,7 +20,11 @@ import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponent,
+    IndexComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

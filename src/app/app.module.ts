@@ -7,16 +7,17 @@ import { RouterModule, Routes } from "@angular/router";
 
 
 import { AppComponent } from "./app.component";
-import { ProfileComponent } from './pages/profile/profile.component';
-import { IndexComponent } from './pages/index/index.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { ProfileComponent } from "./pages/profile/profile.component";
+import { IndexComponent } from "./pages/index/index.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { SignupComponent } from "./pages/signup/signup.component";
 
-/* const routes: Routes = [
-  { path: "", redirectTo: "/journal", pathMatch: "full" },
-  { path: "journal",  component: PageJournalComponent },
-  { path: "journal/:id", component: PageJournalDetailComponent }
-]; */
+const routes: Routes = [
+  { path: "", redirectTo: "/index", pathMatch: "full" },
+  { path: "index",  component: IndexComponent },
+  { path: "auth/login", component: LoginComponent },
+  { path: "auth/signup", component: SignupComponent }
+];
 
 @NgModule({
   declarations: [

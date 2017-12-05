@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { AsyncPipe } from "@angular/common";
+import { ConnectApiService } from "../../services/connect-api.service";
 
 @Component({
   selector: "app-index",
@@ -6,11 +8,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./index.component.css"]
 })
 export class IndexComponent implements OnInit {
-  places = null;
+  places: Promise<string> = null;
 
-  constructor() { }
+  constructor(private connectApiService: ConnectApiService) { }
 
   ngOnInit() {
+    this.places = this.connectApiService.getRandomPlaces();
   }
+
 
 }

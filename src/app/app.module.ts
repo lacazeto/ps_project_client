@@ -5,12 +5,17 @@ import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
 
+// - Services
+import { ConnectApiService } from "./services/connect-api.service";
+import { AuthenticationService } from "./services/authentication.service";
 
-import { AppComponent } from "./app.component";
+// - Pages
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { IndexComponent } from "./pages/index/index.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
+
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/index", pathMatch: "full" },
@@ -33,7 +38,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ConnectApiService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

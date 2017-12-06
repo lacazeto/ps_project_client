@@ -2,18 +2,22 @@
   <form action="/auth/signup" method="POST">
     <div>
       <label for="username">Username:</label>
-      <input type="text" name="username">
+      <input type="text" [(ngModel)]="formInfo.username" name="username">
     </div>
     <div>
       <label for="password">Password:</label>
-      <input type="password" name="password">
+      <input type="password" [(ngModel)]="formInfo.password" name="password">
     </div>
     <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name">
+        <label for="firstName">First Name:</label>
+        <input type="text" [(ngModel)]="formInfo.firstName" name="firstName">
     </div>
     <div>
-      <input type="submit" value="Register">
+      <label for="lastName">Last Name:</label>
+      <input type="text" [(ngModel)]="formInfo.lastName" name="lastName">
+  </div>
+    <div>
+      <input (click)="signup()" type="submit" value="Register">
     </div>
   </form>
 </div>

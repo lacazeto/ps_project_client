@@ -5,18 +5,15 @@ import "rxjs/add/operator/toPromise";
 @Injectable()
 export class ConnectApiService {
 
-  baseUrl = "http://http://localhost:3000";
+  baseUrl = "http://localhost:3000";
 
   constructor(private http: Http) { }
 
-  checkForSession () {
-
-  }
-
   getRandomPlaces (): Promise<string>  {
-    return this.http.get(this.baseUrl)
+    return this.http.get(this.baseUrl + "/places")
       .toPromise()
-      .then((res: Response) => res.json());
+      .then((res: Response) => res.json())
+      .catch((err) => err.json().message);
   }
 
 }

@@ -1,17 +1,35 @@
 <div class="login-form">
-  <form action="/auth/login" method="POST">
-    <div>
+  <form action="/auth/signup" method="POST"  #myForm="ngForm">
+
+    <div class="field" [ngClass]="{'has-error': myUserName.errors && myUserName.touched}">
       <label for="username">Username:</label>
-      <input type="text" name="username">
+      <br>
+      <input  class="form-control" type="text" [(ngModel)]="formInfo.username" name="username" #myUserName="ngModel" required>
     </div>
-    <div>
+
+    <div *ngIf="myUserName.errors && myUserName.dirty">
+      <p *ngIf="myUserName.errors.required" class="validation">username is required</p>
+    </div>
+
+    <div class="field" [ngClass]="{'has-error': (myPassword.errors && myPassword.touched)}">
       <label for="password">Password:</label>
-      <input type="password" name="password">
+      <br>
+      <input  class="form-control" type="password" [(ngModel)]="formInfo.password" #myPassword="ngModel" name="password" required>
     </div>
+
+    <div *ngIf="myPassword.errors && myPassword.touched">
+      <p *ngIf="myPassword.errors.required" class="validation">password is required</p>
+    </div>
+
     <div>
-      <input type="submit" value="Log In">
+      <input class="btn btn-success" (click)="login()" type="submit" value="Log In">
     </div>
   </form>
+
+  <div *ngIf="error">
+    <p> {{ error }} </p>
+  </div>
+  
 </div>
 
 <p>OR</p>

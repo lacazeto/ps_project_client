@@ -22,19 +22,19 @@ export class AuthenticationService {
   }
 
   login(user) {
-    return this.http.post("/auth/login", user)
+    return this.http.post(this.baseUrl + "/auth/login", user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.post("/auth/logout", {})
+    return this.http.post(this.baseUrl + "/auth/logout", {})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   isLoggedIn() {
-    return this.http.get("/auth/loggedin")
+    return this.http.get(this.baseUrl + "/auth/loggedin")
       .map(res => res.json())
       .catch(this.handleError);
   }

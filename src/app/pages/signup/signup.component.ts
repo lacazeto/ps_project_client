@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../../services/authentication.service";
 import { Forms } from "../../models/forms.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signup",
@@ -17,10 +18,10 @@ export class SignupComponent implements OnInit {
   };
 
   user: any = null;
-  error: string = null;
+  error: Object = null;
 
 
-  constructor(private authentication: AuthenticationService) { }
+  constructor(private authentication: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,8 +29,14 @@ export class SignupComponent implements OnInit {
   signup() {
     this.authentication.signup(this.formInfo)
       .subscribe(
-        (user) => this.user = user,
-        (err) => console.log(err)
+        (user) => {
+          this.user = user;
+          this.router.navigate(["/index"]);
+        },
+        (err) => {
+          console.log(err);
+          this.error = err;
+        }
       );
   }
 }

@@ -1,19 +1,42 @@
 /* SETUP DEFAULT */
 html {
     box-sizing: border-box;
-  }
-  *,
-  *:before,
-  *:after {
+}
+
+*,
+*:before,
+*:after {
     box-sizing: inherit;
-  }
+}
   
-  * {
+* {
     margin: 0;
     padding: 0;
     outline: black solid 1px;
-  }
+}
 
-  body {
-    background-color: rgb(82, 153, 82)
-  }
+/* -- FORMS -- */
+
+form .field {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    font-style: bold;
+}
+
+form .field.has-error label {
+    color: red;
+}
+
+form .validation {
+    margin: 5px 0 10px;
+    color: red;
+}
+
+form .field.has-error input {
+    border: 1px solid  red;
+}
+

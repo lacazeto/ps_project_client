@@ -1,10 +1,10 @@
 <div class="login-form">
-  <form action="/auth/signup" method="POST"  #myForm="ngForm">
+  <form action="/auth/signup" method="POST" (submit)="login(myForm)" #myForm="ngForm">
 
     <div class="field" [ngClass]="{'has-error': myUserName.errors && myUserName.touched}">
       <label for="username">Username:</label>
       <br>
-      <input  class="form-control" type="text" [(ngModel)]="formInfo.username" name="username" #myUserName="ngModel" required>
+      <input  class="form-control" type="text" [(ngModel)]="userInfo.userName" name="username" #myUserName="ngModel" required>
     </div>
 
     <div *ngIf="myUserName.errors && myUserName.dirty">
@@ -14,7 +14,7 @@
     <div class="field" [ngClass]="{'has-error': (myPassword.errors && myPassword.touched)}">
       <label for="password">Password:</label>
       <br>
-      <input  class="form-control" type="password" [(ngModel)]="formInfo.password" #myPassword="ngModel" name="password" required>
+      <input  class="form-control" type="password" [(ngModel)]="userInfo.password" #myPassword="ngModel" name="password" required>
     </div>
 
     <div *ngIf="myPassword.errors && myPassword.touched">
@@ -22,18 +22,19 @@
     </div>
 
     <div>
-      <input class="btn btn-success" (click)="login()" type="submit" value="Log In">
+      <input class="btn btn-success" type="submit" value="Log In">
     </div>
   </form>
-
-  <div *ngIf="error">
-    <p> {{ error }} </p>
-  </div>
-  
 </div>
 
-<p>OR</p>
-<br>
-<div class="btn-route-signup">
-  <button><a [routerLink]="['/auth/signup']"><h2>SIGN UP</h2></a></button>
+<div *ngIf="error">
+  <p> {{ error }} </p>
+</div>
+
+<div class="mid-container">
+  <p>OR</p>
+  <br>
+  <div>
+    <button class="btn btn-sm"><a [routerLink]="['/auth/signup']">SIGN UP</a></button>
+  </div>
 </div>

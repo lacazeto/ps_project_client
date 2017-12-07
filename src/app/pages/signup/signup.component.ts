@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../../services/authentication.service";
-import { Forms } from "../../models/forms.model";
+import { User } from "../../models/user.model";
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,34 +10,37 @@ import { Router } from "@angular/router";
 })
 export class SignupComponent implements OnInit {
 
-  formInfo: Forms = {
-    username: "",
+  userInfo = new User({
+    userName: "",
     password: "",
     firstName: "",
     lastName: ""
-  };
+  });
 
-  user: any = null;
-  error: Object = null;
+  error: string;
 
 
   constructor(private authentication: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    /* this.authentication.isLoggedIn()
+    .then(
+      (user) => {
+        this.userInfo = user;
+        this.error = null;
+      }); */
   }
 
-  signup() {
-    this.authentication.signup(this.formInfo)
+  signup(form) {
+    if (form.invalid) {
+      return;
+    }
+    this.error = null;
+    this.authentication.signup(this.userInfo)
       .subscribe(
-        (user) => {
-          this.user = user;
-          this.router.navigate(["/index"]);
-        },
-        (err) => {
-          console.log(err);
-          this.error = err;
-        }
-      );
+      () => this.router.navigate(["/index"]),
+      (err) => this.error = err
+    );
   }
 }
 

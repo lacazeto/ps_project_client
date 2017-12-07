@@ -1,10 +1,10 @@
 <div class="signup-form">
-  <form action="/auth/signup" method="POST"  #myForm="ngForm">
+  <form action="/auth/signup" method="POST"  (submit)="signup(myForm)"   #myForm="ngForm">
 
     <div class="field" [ngClass]="{'has-error': myUserName.errors && myUserName.touched}">
       <label for="username">Username:</label>
       <br>
-      <input class="form-control" type="text" [(ngModel)]="formInfo.username" name="username" #myUserName="ngModel" minlength="6" required>
+      <input class="form-control" type="text" [(ngModel)]="userInfo.userName" name="username" #myUserName="ngModel" minlength="6" required>
     </div>
 
     <div *ngIf="myUserName.errors && myUserName.dirty">
@@ -14,7 +14,7 @@
     <div class="field" [ngClass]="{'has-error': (myPassword.errors && myPassword.touched)}">
       <label for="password">Password:</label>
       <br>
-      <input class="form-control" type="password" [(ngModel)]="formInfo.password" #myPassword="ngModel" name="password" required>
+      <input class="form-control" type="password" [(ngModel)]="userInfo.password" #myPassword="ngModel" name="password" required>
     </div>
 
     <div *ngIf="myPassword.errors && myPassword.touched">
@@ -24,7 +24,7 @@
     <div class="field" [ngClass]="{'has-error': (firstName.errors  && firstName.touched)}">
         <label for="firstName">First Name:</label>
         <br>
-        <input class="form-control" type="text" [(ngModel)]="formInfo.firstName" #firstName="ngModel" name="firstName" required>
+        <input class="form-control" type="text" [(ngModel)]="userInfo.firstName" #firstName="ngModel" name="firstName" required>
     </div>
 
     <div *ngIf="firstName.errors && firstName.touched">
@@ -34,7 +34,7 @@
     <div class="field" [ngClass]="{'has-error': (lastName.errors && lastName.touched)}">
       <label for="lastName">Last Name:</label>
       <br>
-      <input class="form-control" type="text" [(ngModel)]="formInfo.lastName" #lastName="ngModel" name="lastName" required>
+      <input class="form-control" type="text" [(ngModel)]="userInfo.lastName" #lastName="ngModel" name="lastName" required>
     </div>
 
     <div *ngIf="lastName.errors && lastName.touched">
@@ -42,12 +42,12 @@
     </div>
 
     <div>
-      <input class="btn btn-success" (click)="signup()" type="submit" value="Register">
+      <input class="btn btn-success" type="submit" value="Register">
     </div>
   </form>
-
-  <div *ngIf="error">
-    <p> {{ error }} </p>
-  </div>
-  
 </div>
+
+<div *ngIf="error">
+  <p> {{ error }} </p>
+</div>
+  

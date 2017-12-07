@@ -11,4 +11,10 @@ form {
 
 .btn {
     margin-top: 5px;
+    size: 50%;
+}
+
+.mid-container {
+    padding-top: 10%;
+    text-align: center;
 }

@@ -31,11 +31,7 @@ export class LoginComponent implements OnInit {
   login(form) {
     this.authentication.login(this.userInfo)
       .subscribe(
-        (user) => {
-          this.userInfo = user;
-          this.error = null;
-          this.router.navigate(["/index"]);
-        },
+        (user) => this.router.navigate(["/index"]),
         (err) => {
           console.log(err);
           this.error = err;

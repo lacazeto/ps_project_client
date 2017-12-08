@@ -24,13 +24,16 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.connectApiService.getRandomPlaces()
-      .then((result) => this.places = result);
-    /* this.authentication.isLoggedIn()
+      .then((result) => {
+        this.places = result;
+      }),
+    this.authentication.isLoggedIn()
     .then(
-      (user) => {
-        this.userInfo = user;
-        this.error = null;
-      }); */
+      (result) => {
+        // console.log("a");
+        this.userInfo = result;
+        // this.error = null; */
+      });
   }
 
 

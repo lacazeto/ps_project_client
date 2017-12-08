@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" [routerLink]="['/index']">Home</a>
-    <a class="navbar-brand" *ngIf="!userInfo" [routerLink]="['/auth/login']">Log In</a>
-    <a class="navbar-brand" *ngIf="userInfo" [routerLink]="['/profile']">My Profile</a>
-    <a class="navbar-brand" *ngIf="userInfo" [routerLink]="['/auth/logout']">Log Out</a>
+    <a class="navbar-brand" *ngIf="!user"  [routerLink]="['/auth/login']">Log In</a>
+    <a class="navbar-brand" *ngIf="user"  [routerLink]="['/profile']">My Profile</a>
+    <a class="navbar-brand" *ngIf="user"  [routerLink]="['/auth/logout']">Log Out</a>
 </nav>
 <br>
 <router-outlet></router-outlet>

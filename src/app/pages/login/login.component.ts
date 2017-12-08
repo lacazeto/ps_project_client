@@ -10,10 +10,10 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  userInfo = new User({
-    userName: "",
+  userInfo = {
+    username: "",
     password: ""
-  });
+  };
 
   error: string;
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       }); */
   }
 
-  login() {
+  login(form) {
     this.authentication.login(this.userInfo)
       .subscribe(
         (user) => {

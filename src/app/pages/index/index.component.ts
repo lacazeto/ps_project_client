@@ -11,18 +11,20 @@ import { User } from "../../models/user.model";
 })
 export class IndexComponent implements OnInit {
 
-  places: Promise<string> = null;
-  userInfo = new User({
+  places: Array<{}> = null;
+
+  userInfo = {
     userName: "",
     password: ""
-  });
-  error: Object = null;
+  };
+  error: any = null;
 
   constructor(private connectApiService: ConnectApiService,
     private authentication: AuthenticationService) { }
 
   ngOnInit() {
-    this.places = this.connectApiService.getRandomPlaces()
+    this.connectApiService.getRandomPlaces()
+      .then((result) => this.places = result);
     /* this.authentication.isLoggedIn()
     .then(
       (user) => {

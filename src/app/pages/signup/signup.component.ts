@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../../services/authentication.service";
 import { User } from "../../models/user.model";
 import { Router } from "@angular/router";
+import "rxjs/add/operator/toPromise";
 
 @Component({
   selector: "app-signup",
@@ -10,12 +11,12 @@ import { Router } from "@angular/router";
 })
 export class SignupComponent implements OnInit {
 
-  userInfo = new User({
-    userName: "",
+  userInfo = {
+    username: "",
     password: "",
     firstName: "",
     lastName: ""
-  });
+  };
 
   error: string;
 
@@ -23,12 +24,7 @@ export class SignupComponent implements OnInit {
   constructor(private authentication: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    /* this.authentication.isLoggedIn()
-    .then(
-      (user) => {
-        this.userInfo = user;
-        this.error = null;
-      }); */
+    /*this.userInfo = this.authentication.isLoggedIn();*/
   }
 
   signup(form) {

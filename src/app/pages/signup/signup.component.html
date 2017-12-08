@@ -4,7 +4,7 @@
     <div class="field" [ngClass]="{'has-error': myUserName.errors && myUserName.touched}">
       <label for="username">Username:</label>
       <br>
-      <input class="form-control" type="text" [(ngModel)]="userInfo.userName" name="username" #myUserName="ngModel" minlength="6" required>
+      <input class="form-control" type="text" [(ngModel)]="userInfo.username" name="username" #myUserName="ngModel" minlength="6" required>
     </div>
 
     <div *ngIf="myUserName.errors && myUserName.dirty">

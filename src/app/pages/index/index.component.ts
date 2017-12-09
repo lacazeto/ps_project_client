@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
     this.connectApiService.getRandomPlaces()
       .then((result) => {
         this.places = result;
-      }),
+      });
     this.user = this.authentication.getUser();
   }
 

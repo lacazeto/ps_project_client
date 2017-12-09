@@ -32,21 +32,31 @@ export class AuthenticationService {
     const options = new RequestOptions();
     options.withCredentials = true;
     return this.http.post(this.baseUrl + "/auth/signup", user, options)
-      .map(res => res.json());
-  }
+      .map(res => {
+        this.setUser(new User(res.json()));
+        return user;
+      });
+    }
+
 
   login(user) {
     const options = new RequestOptions();
     options.withCredentials = true;
     return this.http.post(this.baseUrl + "/auth/login", user, options)
-      .map(res => res.json());
+    .map(res => {
+      this.setUser(new User(res.json()));
+      return user;
+    });
   }
 
   logout() {
     const options = new RequestOptions();
     options.withCredentials = true;
     return this.http.post(this.baseUrl + "/auth/logout", {}, options)
-      .map((res => res.json()));
+      .map(res => {
+        this.setUser();
+        return null;
+      });
   }
 
   isLoggedIn() {
@@ -54,7 +64,11 @@ export class AuthenticationService {
     options.withCredentials = true;
     return this.http.get(this.baseUrl + "/auth/loggedin", options)
       .toPromise()
-      .then(res => res.json())
+      .then(res => {
+        const user = new User(res.json());
+        this.setUser(user);
+        return user;
+      })
       .catch((err) => {
         if (err.status === 404) {
           return err;

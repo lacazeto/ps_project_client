@@ -6,8 +6,10 @@
 <div class="places-container">
     <h2>Places:</h2>
     <div class="place" *ngFor="let place of places">
-      <h3 *ngIf="place.isEnabled">{{place.description}}</h3>
-      <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
-      <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
+      <a [routerLink]="['/place', place._id]"> 
+        <h3 *ngIf="place.isEnabled">{{place.description}}</h3>
+        <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
+        <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
+      </a>
     </div>
 </div>

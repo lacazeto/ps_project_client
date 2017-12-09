@@ -10,8 +10,18 @@ export class ConnectApiService {
   constructor(private http: Http) { }
 
   getRandomPlaces (): Promise<any>  {
-    return this.http.get(this.baseUrl + "/places")
+    return this.http.get(this.baseUrl + "/place")
       .toPromise()
       .then((res: Response) => res.json());
+  }
+
+  getPlace (id) {
+    return this.http.get(this.baseUrl + `/place/${id}`)
+    .toPromise()
+    .then((res: Response) => res.json());
+  }
+
+  registerPet (pet) {
+    //
   }
 }

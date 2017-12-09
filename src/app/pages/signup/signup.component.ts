@@ -11,20 +11,21 @@ import "rxjs/add/operator/toPromise";
 })
 export class SignupComponent implements OnInit {
 
-  userInfo = {
+  userInfo = new User ({
     username: "",
     password: "",
     firstName: "",
     lastName: ""
-  };
+  });
 
+  user = null;
   error: string;
 
 
   constructor(private authentication: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    /*this.userInfo = this.authentication.isLoggedIn();*/
+    this.user = this.authentication.getUser();
   }
 
   signup(form) {

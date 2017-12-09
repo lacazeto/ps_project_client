@@ -18,6 +18,7 @@ export class IndexComponent implements OnInit {
     password: ""
   };
   error: any = null;
+  user = null;
 
   constructor(private connectApiService: ConnectApiService,
     private authentication: AuthenticationService) { }
@@ -27,13 +28,7 @@ export class IndexComponent implements OnInit {
       .then((result) => {
         this.places = result;
       }),
-    this.authentication.isLoggedIn()
-    .then(
-      (result) => {
-        // console.log("a");
-        this.userInfo = result;
-        // this.error = null; */
-      });
+    this.user = this.authentication.getUser();
   }
 
 

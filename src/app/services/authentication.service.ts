@@ -61,4 +61,8 @@ export class AuthenticationService {
         }
       });
   }
+
+  getUser() {
+    return this.user;
+  }
 }

@@ -10,22 +10,18 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  userInfo = {
+  userInfo = new User ({
     username: "",
     password: ""
-  };
+  });
 
+  user = null;
   error: string;
 
   constructor(private authentication: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    /* this.authentication.isLoggedIn()
-    .then(
-      (user) => {
-        this.userInfo = user;
-        this.error = null;
-      }); */
+    this.user = this.authentication.getUser();
   }
 
   login(form) {
@@ -34,7 +30,7 @@ export class LoginComponent implements OnInit {
         (user) => this.router.navigate(["/index"]),
         (err) => {
           console.log(err);
-          this.error = err;
+          this.error = err._body;
         }
       );
   }

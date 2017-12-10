@@ -25,6 +25,12 @@ export class AppComponent implements OnInit {
       this.user = user;
       this.anon = !user;
     });
+    this.user = this.authentication.getUser();
+  }
+
+  logout() {
+    this.authentication.logout()
+      .subscribe(() => this.router.navigate(["/index"]));
   }
 
 }

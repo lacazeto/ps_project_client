@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
     password: ""
   };
   error: any = null;
-  user = null;
+  user: User;
 
   constructor(private connectApiService: ConnectApiService,
     private authentication: AuthenticationService) { }

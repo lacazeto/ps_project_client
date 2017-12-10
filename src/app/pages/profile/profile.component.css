@@ -1,0 +1,38 @@
+.user-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 5%;    
+}   
+
+.Photo {
+    background-color: gray;
+    height: 50px;
+    width: 50px;
+}
+
+#username, #fullname {
+    padding: 0 5px;
+    text-transform: capitalize;
+}
+
+.registers-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 5%;   
+}  
+
+.register {
+    display: flex;
+    padding: 0 5px;
+    outline: 2px solid rgb(53, 37, 70);
+}
+
+a, div {
+    text-align: center;
+}
+
+* {
+    outline: black 1px solid;
+}

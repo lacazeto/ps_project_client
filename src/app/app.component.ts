@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   loading = true;
   anon: boolean;
   user: User;
+  isInsideProfile = false;
 
   constructor(
     private authentication: AuthenticationService,
@@ -29,8 +30,16 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
+    this.isInsideProfile = false;
     this.authentication.logout()
       .subscribe(() => this.router.navigate(["/index"]));
   }
 
+  hideProfile () {
+    this.isInsideProfile = true;
+  }
+
+  showProfile () {
+    this.isInsideProfile = false;
+  }
 }

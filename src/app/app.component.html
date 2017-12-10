@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['/index']">Home</a>
-    <a class="navbar-brand" *ngIf="!user"  [routerLink]="['/auth/login']">Log In</a>
-    <a class="navbar-brand" *ngIf="user"  [routerLink]="['/profile', user._id]">My Profile</a>
+    <a class="navbar-brand" (click)="showProfile()" [routerLink]="['/index']">Home</a>
+    <a class="navbar-brand" *ngIf="!user" (click)="showProfile()" [routerLink]="['/auth/login']">Log In</a>
+    <a class="navbar-brand" *ngIf="user && !isInsideProfile" (click)="hideProfile()" [routerLink]="['/profile', user._id]">My Profile</a>
     <a class="navbar-brand" *ngIf="user"  (click)="logout()">Log Out</a>
 </nav>
 <br>

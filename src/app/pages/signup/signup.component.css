@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 form {
@@ -10,5 +10,10 @@ form {
 }
 
 .btn {
+    margin-top: 10px;
+    font-weight: 900;
+}
+
+form > div {
     margin-top: 5px;
 }

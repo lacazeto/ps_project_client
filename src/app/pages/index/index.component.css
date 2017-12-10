@@ -1,3 +1,7 @@
 .place {
     outline: 2px solid #212529;
 }
+
+#description {
+    text-transform: capitalize;
+}

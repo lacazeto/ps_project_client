@@ -10,11 +10,18 @@ form {
 }
 
 .btn {
-    margin-top: 5px;
-    size: 50%;
+    margin-top: 10px;
+    font-weight: 900;
 }
 
 .mid-container {
     padding-top: 10%;
     text-align: center;
+}
+
+#login-error {
+    text-align: center;
+    font-weight: 900;
+    color: red;
+    padding-top: 10px;
 }

@@ -7,7 +7,7 @@ import { AuthenticationService } from "../../services/authentication.service";
   styleUrls: ["./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
-
+  isRegisterClicker = false;
   user = null;
 
   constructor(private authentication: AuthenticationService) { }
@@ -16,4 +16,8 @@ export class ProfileComponent implements OnInit {
     this.user = this.authentication.getUser();
   }
 
+  registerPet () {
+    this.isRegisterClicker = !this.isRegisterClicker;
+    console.log("its me");
+  }
 }

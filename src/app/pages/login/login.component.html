@@ -28,13 +28,13 @@
 </div>
 
 <div *ngIf="error">
-  <p> {{ error }} </p>
+  <p id="login-error"> {{ error }} </p>
 </div>
 
 <div class="mid-container">
-  <p>OR</p>
+  <p><strong>OR</strong></p>
   <br>
   <div>
-    <button class="btn btn-sm"><a [routerLink]="['/auth/signup']">SIGN UP</a></button>
+    <button class="btn btn-md"><a [routerLink]="['/auth/signup']">SIGN UP</a></button>
   </div>
 </div>

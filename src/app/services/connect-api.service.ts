@@ -20,13 +20,12 @@ export class ConnectApiService {
       });
   }
 
-  getPlace (id) {
-    return this.http.get(this.baseUrl + `/place/${id}`)
+  getPlace (placeId) {
+    return this.http.get(this.baseUrl + `/place/${placeId}`)
       .toPromise()
       .then((res: Response) => res.json())
       .catch(err => {
         console.log(err);
-        // throw err;
         return Promise.reject(err);
       });
   }
@@ -34,10 +33,30 @@ export class ConnectApiService {
   registerPet (pet) {
     return this.http.post(this.baseUrl + "/pet", pet)
       .toPromise()
-      .then(res => res.json())
+      .then((res: Response) => res.json())
       .catch(err => {
         console.log(err);
         throw err;
       });
+  }
+
+  getPetsFromUser (ownerId) {
+    return this.http.get(this.baseUrl + `/pet/${ownerId}`)
+    .toPromise()
+    .then((res: Response) => res.json())
+    .catch(err => {
+      console.log(err);
+      throw err;
+    });
+  }
+
+  deletePet () {
+    return this.http.delete(this.baseUrl + "/pet")
+    .toPromise()
+    .then((res: Response) => res.json())
+    .catch(err => {
+      console.log(err);
+      throw err;
+    });
   }
 }

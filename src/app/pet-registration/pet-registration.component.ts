@@ -12,10 +12,15 @@ export class PetRegistrationComponent implements OnInit {
 
   @Output() hide = new EventEmitter<string>();
 
+  types = [
+    { value: "Dog", display: "Dog" },
+    { value: "Cat", display: "Cat" }
+  ];
+
   pet = {
     owner: "",
     name: "",
-    type: "Dog"
+    type: this.types[0].value
   };
 
   constructor(private activatedRoute: ActivatedRoute,

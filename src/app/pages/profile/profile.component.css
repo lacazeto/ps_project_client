@@ -1,3 +1,4 @@
+/* USER DETAILS CONTAINER */
 .user-details {
     display: flex;
     justify-content: flex-start;
@@ -31,6 +32,23 @@
 
 a, div {
     text-align: center;
+}
+
+/* PET LIST CONTAINER */
+.myRegPets {
+    width: 80%;
+    display: flex;
+}
+
+.btn-delete {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    color: rgba(0, 0, 0, 0);
+    transform: translate(140%,-50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../../../assets/images/symbols-delete.png);
 }
 
 * {

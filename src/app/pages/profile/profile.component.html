@@ -18,3 +18,14 @@
     <app-pet-registration (hide)="registerPet($event)"></app-pet-registration>
   </div>
 </div>
+
+<h3>Pets:</h3>
+<div class="container myRegPets">
+  <div class="row">
+    <div class="col-3" *ngFor="let pet of myPets">
+      <p>{{pet.type}}</p> 
+      <p>{{pet.name}}</p>
+      <input class="btn-delete" type="submit" [(ngModel)]="pet._id" (click)="delete()" name="delete">
+    </div>
+  </div>
+</div>

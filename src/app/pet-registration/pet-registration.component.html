@@ -9,13 +9,18 @@
       <div *ngIf="petName.errors && petName.touched">
         <p *ngIf="petName.errors.required" class="validation">Pet name is required</p>
       </div>
-      <div class="field">
-        <label for="type">Pet Type:</label>
-        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" [checked]="pet.type === 'Dog'" value="Dog">Dog
-        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" value="Cat">Cat
+      <div class="radio-btn">
+        <label>Pet type:</label>
+        <div class="radio" *ngFor="let type of types">
+          <label>
+            <input type="radio" name="type" [(ngModel)]="pet.type" [value]="type.value">
+            {{type.display}}
+          </label>
+        </div>
       </div>
     </div>
-    <div>
+    <div class="btn-input">
       <input class="btn btn-sm" type="submit" value="Submit">
     </div>
   </form>
+</div>

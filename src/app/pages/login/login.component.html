@@ -4,17 +4,17 @@
     <div class="field" [ngClass]="{'has-error': myUserName.errors && myUserName.touched}">
       <label for="username">Username:</label>
       <br>
-      <input  class="form-control" type="text" [(ngModel)]="userInfo.username" name="username" #myUserName="ngModel" required>
+      <input class="form-control" type="text" [(ngModel)]="userInfo.username" name="username" #myUserName="ngModel" required>
     </div>
 
-    <div *ngIf="myUserName.errors && myUserName.dirty">
+    <div *ngIf="myUserName.errors && myUserName.touched">
       <p *ngIf="myUserName.errors.required" class="validation">username is required</p>
     </div>
 
     <div class="field" [ngClass]="{'has-error': (myPassword.errors && myPassword.touched)}">
       <label for="password">Password:</label>
       <br>
-      <input  class="form-control" type="password" [(ngModel)]="userInfo.password" #myPassword="ngModel" name="password" required>
+      <input class="form-control" type="password" [(ngModel)]="userInfo.password" #myPassword="ngModel" name="password" required>
     </div>
 
     <div *ngIf="myPassword.errors && myPassword.touched">

@@ -3,20 +3,19 @@
     <div>
       <div class="field" [ngClass]="{'has-error': petName.errors && petName.touched}">
         <label for="name">Pet Name:</label>
-        <input type="text" [(ngModel)]="pet.name" name="name" #petName="ngModel" required>
+        <input class="form-control" type="text" [(ngModel)]="pet.name" name="name" #petName="ngModel" required>
       </div>
 
-      <div *ngIf="petName.errors && petName.dirty">
+      <div *ngIf="petName.errors && petName.touched">
         <p *ngIf="petName.errors.required" class="validation">Pet name is required</p>
       </div>
-
       <div class="field">
         <label for="type">Pet Type:</label>
-        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" #dog="ngModel" value="Dog">Dog
-        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" #cat="ngModel" value="Cat">Cat
+        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" [checked]="pet.type === 'Dog'" value="Dog">Dog
+        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" value="Cat">Cat
       </div>
     </div>
     <div>
-      <input ng-disabled="!dog&&!cat" class="btn btn-sm" type="submit" value="Submit">
+      <input class="btn btn-sm" type="submit" value="Submit">
     </div>
   </form>

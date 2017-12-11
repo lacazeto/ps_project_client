@@ -18,7 +18,7 @@ import { PlaceComponent } from "./pages/place/place.component";
 
 
 import { AppComponent } from "./app.component";
-import { PetRegistrationComponent } from './pet-registration/pet-registration.component';
+import { PetRegistrationComponent } from "./pet-registration/pet-registration.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/index", pathMatch: "full" },

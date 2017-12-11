@@ -1,15 +1,20 @@
-<div class="user-details">
-  <div class="Photo"></div>
-  <div class="user-descr">
-    <div id="username">{{user.username}}</div>
-    <div id="fullname">{{user.firstName}} {{user.lastName}}</div>
+<div class="loading" *ngIf="!user">
+    ...loading
+</div>
+<div *ngIf="user">
+  <div class="user-details">
+    <div class="Photo"></div>
+    <div class="user-descr">
+      <div id="username">{{user.username}}</div>
+      <div id="fullname">{{user.firstName}} {{user.lastName}}</div>
+    </div>
+    <div><a [routerLink]="['/#']">Edit Profile</a></div>
   </div>
-  <div><a [routerLink]="['/#']">Edit Profile</a></div>
-</div>
-<div class="registers-container">
-  <div class="register" (click)="registerPet()">Register<br>Pet</div>
-  <div class="register"><a [routerLink]="['/#']">Register<br>Place</a></div>
-</div>
-<div *ngIf="isRegisterClicker">
-  <app-pet-registration></app-pet-registration>
+  <div class="registers-container">
+    <div class="register" (click)="registerPet()">Register<br>Pet</div>
+    <div class="register"><a [routerLink]="['/#']">Register<br>Place</a></div>
+  </div>
+  <div *ngIf="isRegisterClicker">
+    <app-pet-registration (hide)="registerPet($event)"></app-pet-registration>
+  </div>
 </div>

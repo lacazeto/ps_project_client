@@ -34,6 +34,10 @@ export class ConnectApiService {
   registerPet (pet) {
     return this.http.post(this.baseUrl + "/pet", pet)
       .toPromise()
-      .then(res => res.json());
+      .then(res => res.json())
+      .catch(err => {
+        console.log(err);
+        throw err;
+      });
   }
 }

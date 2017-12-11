@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ConnectApiService } from "../services/connect-api.service";
 
 @Component({
   selector: "app-pet-registration",
@@ -7,9 +8,21 @@ import { Component, OnInit } from "@angular/core";
 })
 export class PetRegistrationComponent implements OnInit {
 
-  constructor() { }
+  pet = {
+    name: "",
+    type: ""
+  };
+
+  constructor(private connectApiService: ConnectApiService) { }
 
   ngOnInit() {
   }
 
+  createPet () {
+    this.connectApiService.registerPet(this.pet)
+    .subscribe(
+      () => ,
+      (err) => console.log(err)
+    );
+  }
 }

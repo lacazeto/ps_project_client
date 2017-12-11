@@ -13,10 +13,6 @@ export class IndexComponent implements OnInit {
 
   places: Array<{}> = null;
 
-  userInfo = {
-    userName: "",
-    password: ""
-  };
   error: any = null;
   user: User;
 

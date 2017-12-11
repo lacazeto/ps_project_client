@@ -1,15 +1,18 @@
 
-<div *ngIf="userInfo.userName">
-        <h2> You are now logged in as {{ userInfo.userName }}!! </h2>
+<div *ngIf="user">
+        <h4> Welcome {{ user.username }}!! </h4>
 </div>
 
 <div class="places-container">
-    <h2>Places:</h2>
+    <h3>Places:</h3>
     <div class="place" *ngFor="let place of places">
+      <div class="Photo"></div>
       <a [routerLink]="['/place', place._id]"> 
-        <h3 *ngIf="place.isEnabled" id="description">{{place.description}}</h3>
-        <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
-        <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
+          <div class="place-descr">
+            <h3 *ngIf="place.isEnabled" id="description">{{place.description}}</h3>
+            <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
+            <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
+          </div>
       </a>
     </div>
 </div>

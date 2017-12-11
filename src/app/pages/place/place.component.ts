@@ -22,8 +22,11 @@ export class PlaceComponent implements OnInit {
     this.user = this.authentication.getUser();
     this.activatedRoute.params
     .subscribe((params) => {
-      this.place = this.connectApiService.getPlace(params.id);
-      console.log(this.place);
+     this.connectApiService.getPlace(params.id)
+      .then(place => {
+        this.place = place;
+        console.log(this.place);
+      });
     });
   }
 

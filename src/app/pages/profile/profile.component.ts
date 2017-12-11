@@ -18,6 +18,5 @@ export class ProfileComponent implements OnInit {
 
   registerPet () {
     this.isRegisterClicker = !this.isRegisterClicker;
-    console.log("its me");
   }
 }

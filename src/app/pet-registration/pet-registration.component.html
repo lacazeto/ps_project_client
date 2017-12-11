@@ -1,3 +1,22 @@
-<p>
-  pet-registration works!
-</p>
+<div class="pet-creation-form">
+  <form action="/auth/signup" method="POST" (submit)="createPet()" #myForm="ngForm">
+    <div>
+      <div class="field" [ngClass]="{'has-error': petName.errors && petName.touched}">
+        <label for="name">Pet Name:</label>
+        <input type="text" [(ngModel)]="pet.name" name="name" #petName="ngModel" required>
+      </div>
+
+      <div *ngIf="petName.errors && petName.dirty">
+        <p *ngIf="petName.errors.required" class="validation">Pet name is required</p>
+      </div>
+
+      <div class="field">
+        <label for="type">Pet Type:</label>
+        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" #dog="ngModel" value="Dog">Dog
+        <input  class="checkbox" type="radio" [(ngModel)]="pet.type" name="type" #cat="ngModel" value="Cat">Cat
+      </div>
+    </div>
+    <div>
+      <input ng-disabled="!dog&&!cat" class="btn btn-sm" type="submit" value="Submit">
+    </div>
+  </form>

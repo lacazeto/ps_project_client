@@ -1,3 +1,9 @@
-<p>
+<div class="loading" *ngIf="!place">
+...loading
+</div>
+
+<div *ngIf="place">
   place works!
-</p>
+  {{place.description}}
+  
+</div>

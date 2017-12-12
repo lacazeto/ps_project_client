@@ -64,7 +64,8 @@ export class PlaceComponent implements OnInit {
   }
 
   cancelRequest () {
-    
-  }
+    this.connectApiService.cancelRequestSubmission({_id: this.user._id})
+    .then(() => this.router.navigate(["/profile", this.user._id]));
+}
 
 }

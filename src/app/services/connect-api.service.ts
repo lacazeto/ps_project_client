@@ -82,4 +82,14 @@ export class ConnectApiService {
       throw err;
     });
   }
+
+  cancelRequestSubmission (ownerId) {
+    return this.http.delete(this.baseUrl + "/request/cancel", ownerId)
+    .toPromise()
+    .then((res: Response) => res.json())
+    .catch(err => {
+      console.log(err);
+      throw err;
+    });
+  }
 }

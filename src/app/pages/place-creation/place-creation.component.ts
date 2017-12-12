@@ -32,12 +32,12 @@ export class PlaceCreationComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authentication.getUser();
-    this.place.owner = this.user.id;
+    this.place.owner = this.user._id;
   }
 
   createPlace () {
     this.connectApiService.registerPlace(this.place)
-      .then(() => this.router.navigate(["/index"]));
+      .then(() => this.router.navigate(["/profile", this.user._id]));
   }
 
 }

@@ -1,3 +1,7 @@
+.places-container {
+    overflow: scroll;
+}
+
 .place {
     outline: 2px solid #212529;
 }

@@ -27,7 +27,7 @@
       <div class="pets" *ngFor="let pet of myPets">
         <p>{{pet.type}}</p> 
         <p>{{pet.name}}</p>
-        <input class="btn-delete" type="submit" [(ngModel)]="pet._id" (click)="delete()" name="delete">
+        <input class="btn-delete" type="submit" (click)="delete(pet._id)" name="delete">
       </div>
   </div>
 </div>

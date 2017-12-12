@@ -37,14 +37,13 @@ export class ProfileComponent implements OnInit {
     this.isRegisterClicker = !this.isRegisterClicker;
   }
 
-  delete () {
-    this.connectApiService.deletePet()
-      .then((res) => {})
+  delete (petId) {
+    this.connectApiService.deletePet(petId)
+      .then((res) => { this.updateInfo(); } )
       .catch((err) => {
           console.log(err);
         }
       );
-    this.updateInfo();
   }
 
 }

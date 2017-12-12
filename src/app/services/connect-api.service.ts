@@ -50,8 +50,8 @@ export class ConnectApiService {
     });
   }
 
-  deletePet () {
-    return this.http.delete(this.baseUrl + "/pet")
+  deletePet (petId) {
+    return this.http.delete(this.baseUrl + `/pet/${petId}`)
     .toPromise()
     .then((res: Response) => res.json())
     .catch(err => {

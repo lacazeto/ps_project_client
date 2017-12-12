@@ -11,19 +11,22 @@ import { Router } from "@angular/router";
 })
 export class PlaceComponent implements OnInit {
 
-  place: {} = null;
+  place = null;
   user = null;
+
+  // -- variables for request creation purposes --
   today = new Date();
   dd = null;
   mm = null;
   yyyy = null;
-
-  request: {} = {
+  isRequestAlreadySubmited = false;
+  request = {
     startDate: null,
     endDate: null,
     owner: "",
-    host: ""
+    placeId: ""
   };
+  // -- xx --
 
   constructor(private authentication: AuthenticationService,
     private activatedRoute: ActivatedRoute,
@@ -42,14 +45,26 @@ export class PlaceComponent implements OnInit {
         this.mm = this.today.getMonth() + 1;
         this.yyyy = this.today.getFullYear();
         this.place = place;
+        if (place.requests) {
+          for (let ix = 0; ix < place.requests.length; ix++) {
+            if (this.user._id == place.requests[ix].owner) {
+              this.isRequestAlreadySubmited = true;
+            }
+          }
+        }
       });
     });
   }
 
   createRequest () {
-    // todo
+    this.request.owner = this.user._id;
+    this.request.placeId = this.place._id;
     this.connectApiService.sendRequest(this.request)
       .then(() => this.router.navigate(["/profile", this.user._id]));
+  }
+
+  cancelRequest () {
+    
   }
 
 }

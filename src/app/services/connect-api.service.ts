@@ -74,7 +74,7 @@ export class ConnectApiService {
 
   // -- REQUESTS FUNCTIONS
   sendRequest (request) {
-    return this.http.post(this.baseUrl + "/request", request)
+    return this.http.put(this.baseUrl + "/request", request)
     .toPromise()
     .then((res: Response) => res.json())
     .catch(err => {

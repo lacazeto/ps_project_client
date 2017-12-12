@@ -15,7 +15,7 @@ import { IndexComponent } from "./pages/index/index.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { PlaceComponent } from "./pages/place/place.component";
-
+import { PlaceCreationComponent } from "./pages/place-creation/place-creation.component";
 
 import { AppComponent } from "./app.component";
 import { PetRegistrationComponent } from "./pet-registration/pet-registration.component";
@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: "auth/login", component: LoginComponent, pathMatch: "full" },
   { path: "auth/signup", component: SignupComponent, pathMatch: "full" },
   { path: "place/:id", component: PlaceComponent, pathMatch: "full" },
-  { path: "profile/:id", component: ProfileComponent, pathMatch: "full" }
+  { path: "profile/:id", component: ProfileComponent, pathMatch: "full" },
+  { path: "places/register", component: PlaceCreationComponent, pathMatch: "full" }
 ];
 
 @NgModule({
@@ -37,7 +38,8 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     PlaceComponent,
-    PetRegistrationComponent
+    PetRegistrationComponent,
+    PlaceCreationComponent
   ],
   imports: [
     BrowserModule,

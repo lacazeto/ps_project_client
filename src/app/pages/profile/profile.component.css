@@ -35,9 +35,22 @@ a, div {
 }
 
 /* PET LIST CONTAINER */
+.page-middle-container {
+    display: flex;
+    justify-content: center;
+}
+
+h4 {
+    margin-left: 20px;
+}
+
 .myRegPets {
     width: 80%;
-    display: flex;
+    display: flex;  
+}
+
+.pets {
+    margin: 0 10px 0 10px;
 }
 
 .btn-delete {
@@ -50,7 +63,7 @@ a, div {
     background-repeat: no-repeat;
     background-image: url(../../../assets/images/symbols-delete.png);
 }
-
+/*
 * {
     outline: black 1px solid;
-}
+}*/

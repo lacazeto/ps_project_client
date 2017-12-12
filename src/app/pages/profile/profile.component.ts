@@ -17,8 +17,7 @@ export class ProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private connectApiService: ConnectApiService) { }
 
-  ngOnInit() {
-    this.user = this.authentication.getUser();
+  updateInfo() {
     this.activatedRoute.params
     .subscribe((params) => {
       this.connectApiService.getPetsFromUser(params.id)
@@ -28,7 +27,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.user = this.authentication.getUser();
+    this.updateInfo();
+  }
+
   registerPet () {
+    this.updateInfo();
     this.isRegisterClicker = !this.isRegisterClicker;
   }
 
@@ -39,6 +44,7 @@ export class ProfileComponent implements OnInit {
           console.log(err);
         }
       );
+    this.updateInfo();
   }
 
 }

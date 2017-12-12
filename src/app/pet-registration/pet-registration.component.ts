@@ -14,7 +14,7 @@ export class PetRegistrationComponent implements OnInit {
 
   types = [
     { value: "Dog", display: "Dog" },
-    { value: "Cat", display: "Cat" }
+    { value: "Cat", display: "Cat" },
   ];
 
   pet = {

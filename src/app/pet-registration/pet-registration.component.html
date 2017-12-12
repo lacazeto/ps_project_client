@@ -19,8 +19,11 @@
         </div>
       </div>
     </div>
-    <div class="btn-input">
+    <div *ngIf="!petName.errors" class="btn-input">
       <input class="btn btn-sm" type="submit" value="Submit">
     </div>
+    <div *ngIf="petName.errors" class="btn-input">
+        <input class="btn btn-sm" type="button" value="Submit">
+      </div>
   </form>
 </div>

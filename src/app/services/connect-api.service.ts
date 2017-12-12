@@ -10,6 +10,7 @@ export class ConnectApiService {
 
   constructor(private http: Http) { }
 
+  // --- PLACES FUNCTIONS
   getRandomPlaces (): Promise<any>  {
     return this.http.get(this.baseUrl + "/place")
       .toPromise()
@@ -18,6 +19,16 @@ export class ConnectApiService {
         console.log(err);
         return Promise.reject(err);
       });
+  }
+
+  registerPlace (place) {
+    return this.http.post(this.baseUrl + "/place", place)
+    .toPromise()
+    .then((res: Response) => res.json())
+    .catch(err => {
+      console.log(err);
+      throw err;
+    });
   }
 
   getPlace (placeId) {
@@ -30,6 +41,7 @@ export class ConnectApiService {
       });
   }
 
+  // --- PETS FUNCTIONS
   registerPet (pet) {
     return this.http.post(this.baseUrl + "/pet", pet)
       .toPromise()

@@ -6,14 +6,23 @@
     <div class="place-creation-form">
         <form action="/place" method="POST" (submit)="createPlace()" #myForm="ngForm">
           <div>
+
             <div class="field" [ngClass]="{'has-error': placeDescrip.errors && placeDescrip.touched}">
               <label for="description">Insert a description:</label>
               <input class="form-control" type="text" [(ngModel)]="place.description" name="description" #placeDescrip="ngModel" required>
             </div>
-      
             <div *ngIf="placeDescrip.errors && placeDescrip.touched">
               <p *ngIf="placeDescrip.errors.required" class="validation">place description is required</p>
             </div>
+
+            <div class="field" [ngClass]="{'has-error': price.errors && price.touched}">
+                <label for="price">Price/day (€): </label>
+                <input class="form-control" type="text" [(ngModel)]="place.price" name="price" #price="ngModel" required>
+            </div>
+            <div *ngIf="price.errors && price.touched">
+              <p *ngIf="price.errors.required" class="validation">Price is required</p>
+            </div>
+
             <div class="radio-btn">
               <label>Pets accepted:</label>
               <div class="radio" *ngFor="let type of types">
@@ -24,8 +33,11 @@
               </div>
             </div>
           </div>
-          <div class="btn-input">
+          <div *ngIf="!price.errors && !placeDescrip.errors" class="btn-input">
             <input class="btn btn-sm" type="submit" value="Submit">
+          </div>
+          <div *ngIf="price.errors || placeDescrip.errors" class="btn-input">
+              <input class="btn btn-sm" type="button" value="Submit">
           </div>
         </form>
       </div>

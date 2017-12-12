@@ -27,9 +27,17 @@
       <div class="pets" *ngFor="let pet of myPets">
         <p>{{pet.type}}</p> 
         <p>{{pet.name}}</p>
-        <input class="btn-delete" type="submit" (click)="delete(pet._id)" name="delete">
+        <input class="btn-delete" type="submit" (click)="deletePet(pet._id)" name="delete">
       </div>
   </div>
-</div>
 
+  <h4>My Places:</h4>
+  <div class="myRegPlaces">
+    <div class="places" *ngFor="let place of myPlaces">
+      <p>{{place.description}}</p> 
+      <p>{{place.price}}</p>
+      <p>{{place.type_accepted}}</p>
+      <input class="btn-delete" type="submit" (click)="deletePlace(place._id)" name="delete">
+    </div>
+  </div>
 </div>

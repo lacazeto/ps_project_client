@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   isRegisterClicker = false;
   user = null;
   myPets: Array<{}> = null;
+  myPlaces: Array<{}> = [];
 
   constructor(private authentication: AuthenticationService,
     private activatedRoute: ActivatedRoute,
@@ -20,9 +21,18 @@ export class ProfileComponent implements OnInit {
   updateInfo() {
     this.activatedRoute.params
     .subscribe((params) => {
-      this.connectApiService.getPetsFromUser(params.id)
+      this.connectApiService.getUserPets(params.id)
       .then((result) => {
         this.myPets = result;
+      });
+      this.connectApiService.getUserPlaces(params.id)
+      .then((result) => {
+        this.myPlaces = [];
+        result.forEach(element => {
+          if (element.isEnabled === true) {
+            this.myPlaces.push(element);
+          }
+        });
       });
     });
   }
@@ -37,8 +47,17 @@ export class ProfileComponent implements OnInit {
     this.isRegisterClicker = !this.isRegisterClicker;
   }
 
-  delete (petId) {
+  deletePet (petId) {
     this.connectApiService.deletePet(petId)
+      .then((res) => { this.updateInfo(); } )
+      .catch((err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  deletePlace (placeId) {
+    this.connectApiService.deletePlace({_id: placeId})
       .then((res) => { this.updateInfo(); } )
       .catch((err) => {
           console.log(err);

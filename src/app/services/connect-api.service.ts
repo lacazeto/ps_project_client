@@ -21,6 +21,16 @@ export class ConnectApiService {
       });
   }
 
+  getUserPlaces (userID): Promise<any>  {
+    return this.http.get(this.baseUrl + `/place/user/${userID}`)
+      .toPromise()
+      .then((res: Response) => res.json())
+      .catch(err => {
+        console.log(err);
+        return Promise.reject(err);
+      });
+  }
+
   registerPlace (place) {
     return this.http.post(this.baseUrl + "/place", place)
     .toPromise()
@@ -41,6 +51,16 @@ export class ConnectApiService {
       });
   }
 
+  deletePlace (placeId) {
+    return this.http.put(this.baseUrl + "/place", placeId)
+    .toPromise()
+    .then((res: Response) => res.json())
+    .catch(err => {
+      console.log(err);
+      throw err;
+    });
+  }
+
   // --- PETS FUNCTIONS
   registerPet (pet) {
     return this.http.post(this.baseUrl + "/pet", pet)
@@ -52,7 +72,7 @@ export class ConnectApiService {
       });
   }
 
-  getPetsFromUser (ownerId) {
+  getUserPets (ownerId) {
     return this.http.get(this.baseUrl + `/pet/${ownerId}`)
     .toPromise()
     .then((res: Response) => res.json())

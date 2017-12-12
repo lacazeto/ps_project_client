@@ -3,7 +3,22 @@
 </div>
 
 <div *ngIf="place">
-  place works!
+  {{place.owner}}
   {{place.description}}
+  {{place.price}}
   
+</div>
+
+<div *ngIf="place && user">
+    <div *ngIf="place.owner == user._id">
+        <input class="btn btn-sm" type="button" value="Deactivate">
+    </div>
+
+    <div *ngIf="place.owner !== user._id">
+        <Label>Choose a start date:</Label>
+        <input type="date" [(ngModel)]="request.startDate" name="initDay" min={{yyyy}}-{{mm}}-{{dd}}>
+        <Label>Choose a end date:</Label>
+        <input type="date" [(ngModel)]="request.endDate" name="endDay">
+        <input class="btn btn-primary btn-sm" type="button" value="Request">
+    </div>
 </div>

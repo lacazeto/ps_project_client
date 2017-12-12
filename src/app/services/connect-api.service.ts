@@ -71,4 +71,15 @@ export class ConnectApiService {
       throw err;
     });
   }
+
+  // -- REQUESTS FUNCTIONS
+  sendRequest (request) {
+    return this.http.post(this.baseUrl + "/request", request)
+    .toPromise()
+    .then((res: Response) => res.json())
+    .catch(err => {
+      console.log(err);
+      throw err;
+    });
+  }
 }

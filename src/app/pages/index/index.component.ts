@@ -11,7 +11,7 @@ import { User } from "../../models/user.model";
 })
 export class IndexComponent implements OnInit {
 
-  places: Array<{}> = null;
+  places: Array<{}> = [];
 
   error: any = null;
   user: User;
@@ -22,10 +22,12 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.connectApiService.getRandomPlaces()
       .then((result) => {
-        this.places = result;
+        result.forEach(element => {
+          if (element.isEnabled === true) {
+            this.places.push(element);
+          }
+        });
       });
     this.user = this.authentication.getUser();
   }
-
-
 }

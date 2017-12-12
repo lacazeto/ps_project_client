@@ -1,3 +1,36 @@
 <div class="loading" *ngIf="!user">
   ...loading
 </div>
+
+<div *ngIf="user">
+    <div class="place-creation-form">
+        <form action="/place" method="POST" (submit)="createPlace()" #myForm="ngForm">
+          <div>
+            <div class="field" [ngClass]="{'has-error': placeDescrip.errors && placeDescrip.touched}">
+              <label for="description">Insert a description:</label>
+              <input class="form-control" type="text" [(ngModel)]="place.description" name="description" #placeDescrip="ngModel" required>
+            </div>
+      
+            <div *ngIf="placeDescrip.errors && placeDescrip.touched">
+              <p *ngIf="placeDescrip.errors.required" class="validation">place description is required</p>
+            </div>
+            <div class="radio-btn">
+              <label>Pets accepted:</label>
+              <div class="radio" *ngFor="let type of types">
+                <label>
+                  <input type="radio" name="type" [(ngModel)]="place.type" [value]="type.value">
+                  {{type.display}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="btn-input">
+            <input class="btn btn-sm" type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
+
+      <div class="register"><a [routerLink]="['/profile', user._id]">Return</a></div>
+
+</div>
+  

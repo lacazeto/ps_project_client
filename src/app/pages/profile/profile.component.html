@@ -1,7 +1,9 @@
 <div class="loading" *ngIf="!user">
     ...loading
 </div>
+
 <div *ngIf="user">
+
   <div class="user-details">
     <div class="Photo"></div>
     <div class="user-descr">
@@ -12,12 +14,12 @@
   </div>
   <div class="registers-container">
     <div class="register" (click)="registerPet()">Register<br>Pet</div>
-    <div class="register"><a [routerLink]="['/place/register']">Register<br>Place</a></div>
+    <div class="register"><a [routerLink]="['/places/register']">Register<br>Place</a></div>
   </div>
   <div *ngIf="isRegisterClicker">
     <app-pet-registration (hide)="registerPet($event)"></app-pet-registration>
   </div>
-</div>
+
 
 <h4>My Pets:</h4>
 <div class="page-middle-container">
@@ -28,4 +30,6 @@
         <input class="btn-delete" type="submit" [(ngModel)]="pet._id" (click)="delete()" name="delete">
       </div>
   </div>
+</div>
+
 </div>

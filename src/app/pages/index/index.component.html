@@ -1,18 +1,21 @@
-
+<div class="loading" *ngIf="!user">
+  ...loading
+</div>
 <div *ngIf="user">
         <h4> Welcome {{ user.username }}!! </h4>
-</div>
 
-<div class="places-container">
-    <h3>Places:</h3>
-    <div class="place" *ngFor="let place of places">
-      <div class="Photo"></div>
-      <a [routerLink]="['/place', place._id]"> 
-          <div class="place-descr">
-            <h3 *ngIf="place.isEnabled" id="description">{{place.description}}</h3>
-            <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
-            <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
-          </div>
-      </a>
-    </div>
+
+  <div class="places-container">
+      <h3>Places:</h3>
+      <div class="place" *ngFor="let place of places">
+        <div class="Photo"></div>
+        <a [routerLink]="['/place', place._id]"> 
+            <div class="place-descr">
+              <h3 *ngIf="place.isEnabled" id="description">{{place.description}}</h3>
+              <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
+              <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
+            </div>
+        </a>
+      </div>
+  </div>
 </div>

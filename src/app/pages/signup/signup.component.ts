@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
     firstName: "",
     lastName: ""
   });
+  passwordConfirmation = "";
 
   user = null;
   error: string;

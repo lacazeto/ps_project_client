@@ -2,35 +2,40 @@
   <h4> Welcome {{ user.username }}!! </h4>
 </div>
 
+<section>
 <div class="search-form">
-  <form action="/auth/signup" method="POST" (submit)="searchPlaces()" #myForm="ngForm">
-    <p>Find a place:</p>
-    <div class="radio-btn">
-      <label>Animals accepted:</label>
-      <div class="radio" *ngFor="let type of types">
-        <label>
-          <input type="radio" name="type" [(ngModel)]="searchPlace.type_accepted" [value]="type.value">
-          {{type.display}}
-        </label>
+  <div class="placing-cont">
+    <form action="/auth/signup" method="POST" (submit)="searchPlaces()" #myForm="ngForm">
+      <h3>Find a place:</h3>
+      <div class="radio-btn">
+          <label>Animals accepted:</label>
+          <div class="radio" *ngFor="let type of types">
+            <label>
+              <input type="radio" name="type" [(ngModel)]="searchPlace.type_accepted" [value]="type.value">
+              {{type.display}}
+            </label>
+          </div>
       </div>
-    </div>
+    
 
-    <div class="field" [ngClass]="{'has-error': (placeCity.errors && placeCity.touched)}">
-      <label for="city">City:</label>
-      <br>
-      <input class="form-control" type="text" [(ngModel)]="searchPlace.city" #placeCity="ngModel" name="city" required>
-    </div>
 
-    <div class="field" [ngClass]="{'has-error': (placePrice.errors && placePrice.touched)}">
-      <label for="price">Maximum price:</label>
-      <br>
-      <input class="form-control" type="number" [(ngModel)]="searchPlace.price" #placePrice="ngModel" name="price" required>
-    </div>
+      <div class="field" [ngClass]="{'has-error': (placeCity.errors && placeCity.touched)}">
+        <label for="city">City:</label>
+        <br>
+        <input class="form-control" type="text" [(ngModel)]="searchPlace.city" #placeCity="ngModel" name="city" required>
+      </div>
 
-    <div>
-      <input class="btn btn-primary" type="submit" value="Search">
-    </div>
-  </form>
+      <div class="field" [ngClass]="{'has-error': (placePrice.errors && placePrice.touched)}">
+        <label for="price">Maximum price:</label>
+        <br>
+        <input class="form-control" type="number" [(ngModel)]="searchPlace.price" #placePrice="ngModel" name="price" required>
+      </div>
+
+      <div>
+        <input class="btn btn-primary" type="submit" value="Search">
+      </div>
+    </form>
+  </div>
 </div>
 
 <div class="places-container">
@@ -47,3 +52,4 @@
       </a>
     </div>
 </div>
+</section>

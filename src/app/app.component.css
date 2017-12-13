@@ -1,13 +1,59 @@
-nav, footer {
-    background-color: #212529;
-    color: #fff;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
+/* TOP */
+header {
+    top: 0;
     width: 100%;
     text-align: center;
-    height: 10vh;
     padding: 20px 0 20px 0;
+    display: flex;
+    height: 12vh;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 5px solid #476269;
+}
+
+.logo-app {
+    width: 20%;
+}
+
+.brand {
+    width: 80%;
+}
+
+#brand, #cat-logo {
+    width: 100%;
+    height: auto;
+}
+
+/* ALL */
+nav, header {
+    background-color: #F1F1F1;
+    color: #476269;
+}
+
+/* BOTTON */
+nav {
+    border-top: 5px solid #476269;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-icons {
+    width: 80%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.place-holder {
+    color: #F1F1F1;
+}
+
+a {
+    text-decoration: none;
+    color: #476269;
+}
+
+.fa {
+    font-size: 30px;
 }

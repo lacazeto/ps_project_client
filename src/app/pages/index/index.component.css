@@ -1,3 +1,52 @@
+/* GENERAL */
+* {
+    font-weight: bold; 
+    color: #F5E1DA;
+}
+
+body {
+    height: 78vh;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    color: #476269;
+}
+
+section {
+   width: 85%;
+}
+
+/* SEARCH FORM */
+.search-form {
+    margin: 10px 0 0 0; 
+}
+
+.placing-cont {
+    display: flex;
+    justify-content: center;
+}
+
+.radio-btn {
+    display: flex;
+
+}
+
+form {
+    width: 90%;
+}
+
+input {
+    margin: 10px 0 0 10px;
+
+}
+
+label {
+    margin: .5rem 0 0 0;
+}
+
+/* PLACES LISTING */
 .places-container {
     margin-bottom: 13%;;
 }

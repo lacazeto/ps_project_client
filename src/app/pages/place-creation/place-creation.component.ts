@@ -21,7 +21,8 @@ export class PlaceCreationComponent implements OnInit {
   place = {
     owner: "",
     description: "",
-    price: "",
+    price: null,
+    city: "",
     isEnabled: true,
     type: this.types[2].value
   };
@@ -36,6 +37,7 @@ export class PlaceCreationComponent implements OnInit {
   }
 
   createPlace () {
+    this.place.city = this.place.city.toLocaleLowerCase();
     this.connectApiService.registerPlace(this.place)
       .then(() => this.router.navigate(["/profile", this.user._id]));
   }

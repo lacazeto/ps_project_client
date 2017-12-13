@@ -12,8 +12,18 @@ import { User } from "../../models/user.model";
 export class IndexComponent implements OnInit {
 
   places: Array<{}> = [];
+  searchPlace = {
+    type_accepted: "",
+    city: "",
+    price: null
+  };
 
-  error: any = null;
+  types = [
+    { value: "Dog", display: "Dog" },
+    { value: "Cat", display: "Cat" },
+    { value: "Any", display: "Any" }
+  ];
+
   user: User;
 
   constructor(private connectApiService: ConnectApiService,
@@ -23,11 +33,22 @@ export class IndexComponent implements OnInit {
     this.connectApiService.getRandomPlaces()
       .then((result) => {
         result.forEach(element => {
-          if (element.isEnabled === true) {
+          if (this.user) {
+            if (element.isEnabled === true && element.owner !== this.user._id) {
+              this.places.push(element);
+            }
+          }
+          else {
             this.places.push(element);
           }
         });
       });
     this.user = this.authentication.getUser();
+  }
+
+  searchPlaces () {
+    this.searchPlace.city = this.searchPlace.city.toLowerCase();
+    this.connectApiService.userSearchPlaces(this.searchPlace)
+      .then((result) => { this.places = result; });
   }
 }

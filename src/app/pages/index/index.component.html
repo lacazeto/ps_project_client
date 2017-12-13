@@ -2,15 +2,47 @@
   <h4> Welcome {{ user.username }}!! </h4>
 </div>
 
+<div class="search-form">
+  <form action="/auth/signup" method="POST" (submit)="searchPlaces()" #myForm="ngForm">
+    <p>Find a place:</p>
+    <div class="radio-btn">
+      <label>Animals accepted:</label>
+      <div class="radio" *ngFor="let type of types">
+        <label>
+          <input type="radio" name="type" [(ngModel)]="searchPlace.type_accepted" [value]="type.value">
+          {{type.display}}
+        </label>
+      </div>
+    </div>
+
+    <div class="field" [ngClass]="{'has-error': (placeCity.errors && placeCity.touched)}">
+      <label for="city">City:</label>
+      <br>
+      <input class="form-control" type="text" [(ngModel)]="searchPlace.city" #placeCity="ngModel" name="city" required>
+    </div>
+
+    <div class="field" [ngClass]="{'has-error': (placePrice.errors && placePrice.touched)}">
+      <label for="price">Maximum price:</label>
+      <br>
+      <input class="form-control" type="number" [(ngModel)]="searchPlace.price" #placePrice="ngModel" name="price" required>
+    </div>
+
+    <div>
+      <input class="btn btn-primary" type="submit" value="Search">
+    </div>
+  </form>
+</div>
+
 <div class="places-container">
     <h3>Places:</h3>
     <div class="place" *ngFor="let place of places">
       <div class="Photo"></div>
       <a [routerLink]="['/place', place._id]"> 
-          <div class="place-descr">
-            <h3 *ngIf="place.isEnabled" id="description">{{place.description}}</h3>
-            <h3 *ngIf="place.isEnabled">{{place.type_accepted}}</h3>
-            <h4 *ngIf="place.isEnabled">{{place.price}}</h4>
+          <div class="place-descr" *ngIf="place.isEnabled">
+            <h3  class="upper-case">{{place.description}}</h3>
+            <h3 class="upper-case">{{place.type_accepted}}</h3>
+            <h3 class="upper-case">{{place.city}}</h3>
+            <h4>{{place.price}}</h4>
           </div>
       </a>
     </div>

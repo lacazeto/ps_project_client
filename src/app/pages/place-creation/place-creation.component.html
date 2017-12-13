@@ -17,10 +17,15 @@
 
             <div class="field" [ngClass]="{'has-error': price.errors && price.touched}">
                 <label for="price">Price/day (€): </label>
-                <input class="form-control" type="text" [(ngModel)]="place.price" name="price" #price="ngModel" required>
+                <input class="form-control" type="number" [(ngModel)]="place.price" name="price" #price="ngModel" required>
             </div>
             <div *ngIf="price.errors && price.touched">
               <p *ngIf="price.errors.required" class="validation">Price is required</p>
+            </div>
+
+            <div class="field">
+              <label for="city">City: </label>
+              <input class="form-control" type="text" [(ngModel)]="place.city" name="city" #city="ngModel">
             </div>
 
             <div class="radio-btn">

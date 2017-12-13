@@ -1,0 +1,22 @@
+<div class="loading" *ngIf="!user || !userProfile">
+    ...loading
+</div>
+
+<div *ngIf="userProfile">
+
+  <div class="user-details">
+    <div class="Photo"></div>
+    <div class="user-descr">
+      <div id="username">{{userProfile.username}}</div>
+      <div id="fullname">{{userProfile.firstName}} {{userProfile.lastName}}</div>
+    </div>
+
+    <div class="userPets">
+        <div class="pets" *ngFor="let pet of userPets">
+          <p>{{pet.type}}</p> 
+          <p>{{pet.name}}</p>
+        </div>
+    </div>
+
+    <button><a [routerLink]="['/profile', user._id]">Return</a></button>
+  </div>

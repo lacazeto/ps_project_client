@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   user = null;
   myPets: Array<{}> = null;
   myPlaces: Array<{}> = [];
+  myReceivedRequests: Array<{}> = [];
+  myReceivApprovReq: Array<{}> = [];
 
   constructor(private authentication: AuthenticationService,
     private activatedRoute: ActivatedRoute,
@@ -28,9 +30,27 @@ export class ProfileComponent implements OnInit {
       this.connectApiService.getUserPlaces(params.id)
       .then((result) => {
         this.myPlaces = [];
-        result.forEach(element => {
-          if (element.isEnabled === true) {
-            this.myPlaces.push(element);
+        result.forEach(place => {
+          if (place.isEnabled === true) {
+            this.myPlaces.push(place);
+            if (place.requests) {
+              this.myReceivedRequests = [];
+              this.myReceivApprovReq = [];
+              place.requests.forEach(request => {
+                switch (request.status) {
+                  case "Pending":
+                    request.user = request.owner;
+                    request.place_id = place._id;
+                    this.myReceivedRequests.push(request);
+                  break;
+                  case "Accepted":
+                    request.user = request.owner;
+                    request.place_id = place._id;
+                    this.myReceivApprovReq.push(request);
+                  break;
+                }
+              });
+            }
           }
         });
       });

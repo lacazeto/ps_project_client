@@ -21,6 +21,16 @@ export class ConnectApiService {
       });
   }
 
+  userSearchPlaces (search): Promise<any>  {
+    return this.http.post(this.baseUrl + "/place/search", search)
+      .toPromise()
+      .then((res: Response) => res.json())
+      .catch(err => {
+        console.log(err);
+        return Promise.reject(err);
+      });
+  }
+
   getUserPlaces (userID): Promise<any>  {
     return this.http.get(this.baseUrl + `/place/user/${userID}`)
       .toPromise()
@@ -112,4 +122,16 @@ export class ConnectApiService {
       throw err;
     });
   }
+
+  // -- USER FUNCTIONS
+  getUserProfile (userId) {
+    return this.http.get(this.baseUrl + `/profile/${userId}`)
+      .toPromise()
+      .then((res: Response) => res.json())
+      .catch(err => {
+        console.log(err);
+        return Promise.reject(err);
+      });
+  }
+
 }

@@ -1,5 +1,5 @@
 .places-container {
-    overflow: scroll;
+    margin-bottom: 13%;;
 }
 
 .place {
@@ -21,6 +21,6 @@
     margin: 0 5%;
 }
 
-#description {
+.upper-case {
     text-transform: capitalize;
 }

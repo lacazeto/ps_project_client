@@ -12,32 +12,74 @@
     </div>
     <div><a [routerLink]="['/#']">Edit Profile</a></div>
   </div>
+
   <div class="registers-container">
     <div class="register" (click)="registerPet()">Register<br>Pet</div>
     <div class="register"><a [routerLink]="['/places/register']">Register<br>Place</a></div>
   </div>
+
   <div *ngIf="isRegisterClicker">
     <app-pet-registration (hide)="registerPet($event)"></app-pet-registration>
   </div>
 
 
-<h4>My Pets:</h4>
-<div class="page-middle-container">
-  <div class="myRegPets">
-      <div class="pets" *ngFor="let pet of myPets">
-        <p>{{pet.type}}</p> 
-        <p>{{pet.name}}</p>
-        <input class="btn-delete" type="submit" (click)="deletePet(pet._id)" name="delete">
+  <h4>My Pets:</h4>
+  <div class="page-middle-cont">
+
+    <div class="myRegPets">
+        <div class="pets" *ngFor="let pet of myPets">
+          <p>{{pet.type}}</p> 
+          <p>{{pet.name}}</p>
+          <input class="btn-delete" type="submit" (click)="deletePet(pet._id)" name="delete">
+        </div>
+    </div>
+
+    <h4>My Places:</h4>
+    <div class="myRegPlaces">
+      <div class="places" *ngFor="let place of myPlaces">
+        <p>{{place.description}}</p> 
+        <p>{{place.city}}</p>
+        <p>{{place.price}}</p>
+        <p>{{place.type_accepted}}</p>
+        <input class="btn-delete" type="submit" (click)="deletePlace(place._id)" name="delete">
       </div>
+    </div>
+
   </div>
 
-  <h4>My Places:</h4>
-  <div class="myRegPlaces">
-    <div class="places" *ngFor="let place of myPlaces">
-      <p>{{place.description}}</p> 
-      <p>{{place.price}}</p>
-      <p>{{place.type_accepted}}</p>
-      <input class="btn-delete" type="submit" (click)="deletePlace(place._id)" name="delete">
+<div class="requests-contain">
+  <h3>Hosting:</h3>
+  <div>
+    
+    <h4>Received requests:</h4>
+    <div class="received-req" *ngFor="let request of myReceivedRequests">
+      <a [routerLink]="['/place', request.place_id]">
+        <p>{{request.start_Date}}</p>
+        <p>{{request.end_Date}}</p>
+      </a>
+      <a [routerLink]="['/user', request.user]">
+        <p>{{request.owner}}</p>
+      </a>
     </div>
+    
+    <h4>Approved requests:</h4>
+    <div class="approv-req" *ngFor="let request of myReceivApprovReq">
+        <p>{{request.start_Date}}</p>
+        <p>{{request.end_Date}}</p>
+        <p>{{request.owner}}</p>
+    </div>
+
   </div>
+
+  <h3>Going aboard:</h3>
+  <div>
+    
+    <h4>Requests Approved:</h4>
+    <div class="received-req">  
+    </div>
+    
+
+  </div>
+</div>
+
 </div>

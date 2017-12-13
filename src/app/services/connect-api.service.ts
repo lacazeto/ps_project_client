@@ -1,12 +1,14 @@
 import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
+import { environment } from "../../environments/environment";
 
 import "rxjs/add/operator/toPromise";
 
 @Injectable()
 export class ConnectApiService {
 
-  baseUrl = "http://localhost:3000";
+
+  baseUrl = environment.apiUrl;
 
   constructor(private http: Http) { }
 

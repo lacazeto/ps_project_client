@@ -6,6 +6,7 @@ import { User } from "../models/user.model";
 import "rxjs/add/operator/toPromise";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class AuthenticationService {
@@ -17,7 +18,7 @@ export class AuthenticationService {
   // Observable string stream
   userChange$ = this.userChange.asObservable();
 
-  baseUrl = "http://localhost:3000";
+  baseUrl = environment.apiUrl;
 
   constructor(private http: Http) { }
 

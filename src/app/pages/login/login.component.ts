@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user) => this.router.navigate(["/index"]),
         (err) => {
-          console.log(err);
-          this.error = err._body;
+          this.error = err.json().message;
         }
       );
   }

@@ -42,11 +42,12 @@ export class PlaceComponent implements OnInit {
      this.connectApiService.getPlace(params.id)
       .then(place => {
         // populating variables
+        console.log(place);
         this.dd = this.today.getDate();
         this.mm = this.today.getMonth() + 1;
         this.yyyy = this.today.getFullYear();
         this.place = place;
-        if (place.requests) {
+        if (place.requests && this.user) {
           for (let ix = 0; ix < place.requests.length; ix++) {
             if (this.user._id == place.requests[ix].owner) {
               this.isRequestAlreadySubmited = true;

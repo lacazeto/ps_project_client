@@ -1,3 +1,12 @@
+h3, h4 {
+    text-shadow: 2px 2px #476269;
+}
+
+* {
+    font-weight: bold; 
+    color: #F5E1DA;
+}
+
 /* USER DETAILS CONTAINER */
 .user-details {
     display: flex;
@@ -8,8 +17,13 @@
 
 .Photo {
     background-color: gray;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
+    border: #F1F1F1 3px solid;
+    background-image: url(../../../assets/images/placeholder-user.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 5px 10px 0 5px;
 }
 
 #username, #fullname {
@@ -35,7 +49,7 @@ a, div {
 }
 
 /* PET LIST CONTAINER */
-.page-middle-container {
+.page-middle-cont {
     display: flex;
     justify-content: center;
 }

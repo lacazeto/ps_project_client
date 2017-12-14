@@ -1,7 +1,13 @@
+* {
+    font-weight: bold; 
+    color: #F5E1DA;
+}
+
 .signup-form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 form {

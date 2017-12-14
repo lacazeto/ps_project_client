@@ -1,0 +1,25 @@
+h3, h4 {
+    text-shadow: 2px 2px #476269;
+}
+
+* {
+    font-weight: bold; 
+    color: #F5E1DA;
+}
+
+body {
+    height: 78vh;
+    display: flex;
+    justify-content: center;
+}
+
+.Photo {
+    background-color: gray;
+    height: 100px;
+    width: 100px;
+    border: #F1F1F1 3px solid;
+    background-image: url(../../../assets/images/place-no-image.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 5px 10px 0 5px;
+}

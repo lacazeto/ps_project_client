@@ -13,6 +13,7 @@ export class PlaceComponent implements OnInit {
 
   place = null;
   user = null;
+  placeOwner = null;
 
   // -- variables for request creation purposes --
   today = new Date();
@@ -52,8 +53,15 @@ export class PlaceComponent implements OnInit {
             }
           }
         }
+      })
+      .then(place => {
+        this.connectApiService.getUserProfile(this.place.owner)
+          .then(owner => { this.placeOwner = owner;
+          console.log(this.placeOwner); });
       });
     });
+
+
   }
 
   createRequest () {

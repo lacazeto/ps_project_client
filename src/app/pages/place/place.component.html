@@ -3,9 +3,13 @@
 </div>
 
 <div *ngIf="place">
-  {{place.owner}}
-  {{place.description}}
-  {{place.price}}
+  <div class="Photo"></div>
+  <div><h3  class="upper-case">{{place.description}}</h3></div>
+  <h3>{{place.owner}}</h3>
+  <h3>{{place.price}}</h3>
+  <a [routerLink]="['/user', place.owner]">
+    <h3>{{placeOwner.username}}</h3>
+  </a>
   
 </div>
 

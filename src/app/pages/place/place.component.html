@@ -2,7 +2,7 @@
 ...loading
 </div>
 
-<div *ngIf="place">
+<div *ngIf="place && placeOwner">
   <div class="wrapper reposition">
     <div class="Photo"></div>
     <div>
@@ -11,27 +11,29 @@
       <div><h3>€{{place.price}}</h3></div>
     </div>
   </div>
+</div>
 
-
-    <div class="send-request" *ngIf="place.owner !== user._id">
-      <div *ngIf="!isRequestAlreadySubmited">
-        <div class="start-date">
-          <Label>Choose a start date:</Label>
-          <input type="date" [(ngModel)]="request.startDate" name="initDay" min={{yyyy}}-{{mm}}-{{dd}}>
-        </div>
-        <div *ngIf="request.startDate" class="end-date">
-          <Label>Choose an end date:</Label>
-          <input type="date" [(ngModel)]="request.endDate" name="endDay" min={{request.startDate}}>
-        </div>
-        <div *ngIf="request.startDate && request.startDate">
-          <input class="btn btn-primary btn-sm" type="button" (click)="createRequest()" value="Request">
-        </div>
+<div *ngIf="user">
+  <div class="send-request" *ngIf="place.owner !== user._id">
+    <div *ngIf="!isRequestAlreadySubmited">
+      <div class="start-date">
+        <Label>Choose a start date:</Label>
+        <input type="date" [(ngModel)]="request.startDate" name="initDay" min={{yyyy}}-{{mm}}-{{dd}}>
       </div>
-
-      <div class="error-warn" *ngIf="isRequestAlreadySubmited">
-        <h3 id="error">You have already submitted a request</h3>
-        <Label>Cancel request:</Label>
-        <input class="btn btn-danger btn-sm" type="button" (click)="cancelRequest()" value="Cancel">
+      <div *ngIf="request.startDate" class="end-date">
+        <Label>Choose an end date:</Label>
+        <input type="date" [(ngModel)]="request.endDate" name="endDay" min={{request.startDate}}>
+      </div>
+      <div *ngIf="request.startDate && request.startDate">
+        <input class="btn btn-primary btn-sm" type="button" (click)="createRequest()" value="Request">
       </div>
     </div>
+
+    <div class="error-warn" *ngIf="isRequestAlreadySubmited">
+      <h3 id="error">You have already submitted a request</h3>
+      <Label>Cancel request:</Label>
+      <input class="btn btn-danger btn-sm" type="button" (click)="cancelRequest()" value="Cancel">
+    </div>
+  </div>
 </div>
+

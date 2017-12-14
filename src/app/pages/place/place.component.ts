@@ -42,7 +42,6 @@ export class PlaceComponent implements OnInit {
      this.connectApiService.getPlace(params.id)
       .then(place => {
         // populating variables
-        console.log(place);
         this.dd = this.today.getDate();
         this.mm = this.today.getMonth() + 1;
         this.yyyy = this.today.getFullYear();
@@ -57,8 +56,7 @@ export class PlaceComponent implements OnInit {
       })
       .then(place => {
         this.connectApiService.getUserProfile(this.place.owner)
-          .then(owner => { this.placeOwner = owner;
-          console.log(this.placeOwner); });
+          .then(owner => { this.placeOwner = owner; });
       });
     });
 

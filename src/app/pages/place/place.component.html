@@ -11,15 +11,7 @@
       <div><h3>€{{place.price}}</h3></div>
     </div>
   </div>
-  
-  
-  
-</div>
 
-<div *ngIf="place && user">
-    <div *ngIf="place.owner == user._id">
-        <input class="btn btn-sm" type="button" value="Deactivate">
-    </div>
 
     <div class="send-request" *ngIf="place.owner !== user._id">
       <div *ngIf="!isRequestAlreadySubmited">

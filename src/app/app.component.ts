@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   hideProfile () {
-    this.isInsideProfile = true;
+    // this.isInsideProfile = true;
   }
 
   showProfile () {

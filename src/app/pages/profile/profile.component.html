@@ -5,10 +5,12 @@
 <div *ngIf="user">
 
   <div class="user-details">
-    <div class="Photo"></div>
-    <div class="user-descr">
-      <div id="username">{{user.username}}</div>
-      <div id="fullname">{{user.firstName}} {{user.lastName}}</div>
+    <div class="profile-wrapper">
+      <div class="Photo"></div>
+      <div class="user-descr">
+        <div id="username"><h3>{{user.username}}</h3></div>
+        <div id="fullname"><h4>{{user.firstName}} {{user.lastName}}</h4></div>
+      </div>
     </div>
     <div><a [routerLink]="['/#']">Edit Profile</a></div>
   </div>
@@ -17,33 +19,35 @@
     <div class="register" (click)="registerPet()">Register<br>Pet</div>
     <div class="register"><a [routerLink]="['/places/register']">Register<br>Place</a></div>
   </div>
-
+  <br>
   <div *ngIf="isRegisterClicker">
     <app-pet-registration (hide)="registerPet($event)"></app-pet-registration>
   </div>
 
 
-  <h4>My Pets:</h4>
+  <div class="section-change"><h4>My Pets:</h4></div> 
   <div class="page-middle-cont">
 
     <div class="myRegPets">
         <div class="pets" *ngFor="let pet of myPets">
+            <div class="pet-photo"></div>
           <div><p>{{pet.type}}</p></div>
-          <div><p>{{pet.name}}</p></div>
+          <div><p>: {{pet.name}}</p></div>
           <input class="btn-delete" type="submit" (click)="deletePet(pet._id)" name="delete">
         </div>
     </div>
   </div>
   <div class="page-middle-cont">
+      <div class="section-change"><h4>My Places:</h4></div> 
     <div class="wrapper">
-      <h4>My Places:</h4>
+      
       <div class="myRegPlaces">
         <div class="places" *ngFor="let place of myPlaces">
-          <p>{{place.description}}</p> 
-          <p>{{place.city}}</p>
-          <p>{{place.price}}</p>
-          <p>{{place.type_accepted}}</p>
-          <input class="btn-delete" type="submit" (click)="deletePlace(place._id)" name="delete">
+          <p>Name: {{place.description}}</p> 
+          <p>Located at: {{place.city}}</p>
+          <p>Price asked: €{{place.price}}</p>
+          <p>Animals Accepted: {{place.type_accepted}}</p>
+          <button class="btn-delete-place" type="submit" (click)="deletePlace(place._id)" name="delete">Delete</button>
         </div>
       </div>
     </div>
@@ -53,21 +57,21 @@
   <h3>Hosting:</h3>
   <div>
     
-    <h4>Received requests:</h4>
+    <h4> <u> Received requests: </u></h4>
     <div class="received-req" *ngFor="let request of myReceivedRequests">
       <a [routerLink]="['/place', request.place_id]">
-        <p>{{request.start_Date}}</p>
-        <p>{{request.end_Date}}</p>
+        <p>From: {{request.start_Date}}</p>
+        <p>To: {{request.end_Date}}</p>
       </a>
       <a [routerLink]="['/user', request.user]">
         <p>{{request.owner}}</p>
       </a>
     </div>
     
-    <h4>Approved requests:</h4>
+    <u> <h4>Approved requests:</h4> </u>
     <div class="approv-req" *ngFor="let request of myReceivApprovReq">
-        <p>{{request.start_Date}}</p>
-        <p>{{request.end_Date}}</p>
+        <p>From: {{request.start_Date}}</p>
+        <p>To: {{request.end_Date}}</p>
         <p>{{request.owner}}</p>
     </div>
 

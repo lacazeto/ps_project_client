@@ -3,15 +3,16 @@
 </div>
 
 <section>
+<div class="wrapper-cont">
 <div class="search-form">
   <div class="placing-cont">
     <form action="/auth/signup" method="POST" (submit)="searchPlaces()" #myForm="ngForm">
       <h3>Find a place:</h3>
-      <div class="radio-btn">
+      <div class="radio-contain">
           <label>Animals accepted:</label>
           <div class="radio" *ngFor="let type of types">
             <label>
-              <input type="radio" name="type" [(ngModel)]="searchPlace.type_accepted" [value]="type.value">
+              <input id="radio-inpt" type="radio" name="type" [(ngModel)]="searchPlace.type_accepted" [value]="type.value">
               {{type.display}}
             </label>
           </div>
@@ -40,16 +41,38 @@
 
 <div class="places-container">
     <h3>Places:</h3>
-    <div class="place" *ngFor="let place of places">
-      <div class="Photo"></div>
-      <a [routerLink]="['/place', place._id]"> 
-          <div class="place-descr" *ngIf="place.isEnabled">
-            <h3  class="upper-case">{{place.description}}</h3>
-            <h3 class="upper-case">{{place.type_accepted}}</h3>
-            <h3 class="upper-case">{{place.city}}</h3>
-            <h4>{{place.price}}</h4>
+    <div class="place-list" *ngFor="let place of places">
+      <div *ngIf="place.isEnabled">
+        
+        <a [routerLink]="['/place', place._id]">
+        <div class="place-top-section">
+          <div class="wrapper">
+            <div class="Photo"></div>
+            <div><h3  class="upper-case"><strong>{{place.description}}</strong></h3></div>
           </div>
-      </a>
+            <div id="price"><h3>€{{place.price}}</h3></div>
+        </div>
+        <div class="place-botton-section">
+            <div>
+              <h3 class="upper-case">{{place.type_accepted}}</h3></div>
+            <div>
+              <h3 class="upper-case">{{place.city}}</h3></div>
+        </div>
+        </a>
+
+      </div>
     </div>
 </div>
+
+</div>
 </section>
+
+
+<!-- 
+    
+    <div class="place-descr">
+      
+      
+      
+    </div>
+ -->
